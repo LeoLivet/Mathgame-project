@@ -33,10 +33,10 @@ void WelcomeMessage()
 	Console.WriteLine("Welcome to the Math game");
 	Console.WriteLine("Press enter to start!");
 }
-void AddToHistory()//put nogle overrides ind her
-{
-	// lav en array her som tager input fra console og sætter det ind her.
-}
+// void AddToHistory()//put nogle overrides ind her
+// {
+// 	// lav en array her som tager input fra console og sætter det ind her.
+// }
 
 void ChooseMenu(int input) 
 {
