@@ -43,20 +43,24 @@ void ChooseMenu(int input)
 	switch (input)
 	{
 		case 1: //+
-		MultiplicatonGame();
+		Console.WriteLine("You have chosen Additon!");
+		// TODO add option to press enter to continue or e(?) to go back (like a method)
+		AdditionGame();
 		break;
 		
 		case 2: //-
-		
+		Console.WriteLine("You have chosen Subtraction!");
 		break;
 		
 		case 3: // *
-		
+		Console.WriteLine("You have chosen Multiplicaton!");
 		break;
 		
 		case 4: // /
-		
+		Console.WriteLine("You have chosen Division!");
 		break;
+		
+		case 5: //Se tidligere resultater
 		
 		
 		default:
@@ -64,47 +68,10 @@ void ChooseMenu(int input)
 		break;
 	}
 }
-//switch mode for game choice below
-
-/*
-switch
-
-case 1:
-	if input == 1
-		game = addition game
-			addition game er simple tal med plus med få tal (start med maks 100+100 og så tilføj sværhedsgrad senere)
-	break;
-
-
-case 2:
-	if cr == 2
-	game = subtracion game 
-		subtraction game er minus spil 
-	break;
-
-case 3:
-	if cr == 3;
-	game = multiplikation game
-		multiplakation er gange spil
-
-	break
-
-case 4:
-	if cr == 4;
-	game = division game
-		Division spil må ikke kunne give decimaler dvs divider kun med lige tal brug evt %
-		The divisions should result on INTEGERS ONLY and dividends should go from 0 to 100. Example: Your app shouldn't present the division 7/2 to the user, since it doesn't result in an integer.
-
-
-
-
-
-*/
-
 
 void AdditionGame()
 {
-	
+
 }
 
 void SubtractionGame()
@@ -119,5 +86,13 @@ void MultiplicatonGame()
 
 void DivisionGame()
 {
-	
+	/*
+	4
+
+A simple approach would be:
+
+Generate a random first number (n1)
+Generate a random multiplier (m)
+Use the product of the first number and the multiplier as the second number (n2 = n1 * m)
+*/
 }
