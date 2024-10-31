@@ -8,18 +8,14 @@ using System.Runtime.Intrinsics.Arm;
 Random rnd = new Random();
 
 int points = 0;
-int healthPoints = 0;
+int healthPoints = 5;
 
-int lowNumber = 0;
-int highNumber = 20;
-
-bool validInput = false;
 WelcomeMessage();
 
 
-
+while (healthPoints > 0){
 ChooseMenu();
-
+} 
 
 
 
@@ -27,16 +23,20 @@ void WelcomeMessage()
 {
 	Console.WriteLine("Welcome to the Math game");
 	Console.WriteLine("Press enter to start!");
+	Console.ReadLine();
 }
 
 
 void ChooseMenu()
 {
 
-
+	Console.WriteLine("Enter a number for your choice of game:");
+	Console.WriteLine("1: Addition");
+	Console.WriteLine("2: Subtraction");
+	Console.WriteLine("3: Multiplicaton");
+	Console.WriteLine("4: Division");
 
 	string input = Console.ReadLine();
-
 	int result = int.Parse(input);
 
 
@@ -44,29 +44,28 @@ void ChooseMenu()
 	{
 		case 1: //+
 			Console.WriteLine("You have chosen Additon!");
-
 			AdditionGame();
 			break;
 
 		case 2: //-
 			Console.WriteLine("You have chosen Subtraction!");
-			int intA = rnd.Next(50);
-			int intB = rnd.Next(50);
-
+			SubtractionGame();
 			break;
 
 		case 3: // *
 			Console.WriteLine("You have chosen Multiplicaton!");
+			MultiplicatonGame();
 			break;
 
 		case 4: // /
 			Console.WriteLine("You have chosen Division!");
-
+			DivisionGame();
 			break;
 
 		case 5: //Se tidligere resultater
 
 			break;
+
 
 		default:
 			Console.WriteLine("please only pick between the specified choices");
@@ -80,32 +79,25 @@ void AdditionGame()
 	int intB = rnd.Next(50);
 	int correctAnswer = intA + intB;
 	Console.WriteLine($"What is {intA} + {intB}?");
-	int answer = GetAnswer();
-
-
-	for (int i = 0; i < 4; i++)
-	{
-
-		if (answer == correctAnswer)
-		{
-			System.Console.WriteLine("Congrats thats correct!");
-		}
-		else
-		{
-			System.Console.WriteLine("Incorrect 100 points from gryffindor!");
-
-		}
-	}
+	CheckAnswer(GetAnswer(), correctAnswer);
 }
 
 void SubtractionGame()
 {
-
+	int intA = rnd.Next(50);
+	int intB = rnd.Next(50);
+	int correctAnswer = intA - intB;
+	Console.WriteLine($"What is {intA} - {intB}?");
+	CheckAnswer(GetAnswer(), correctAnswer);
 }
 
 void MultiplicatonGame()
 {
-
+	int intA = rnd.Next(50);
+	int intB = rnd.Next(50);
+	int correctAnswer = intA * intB;
+	Console.WriteLine($"What is {intA} * {intB}?");
+	CheckAnswer(GetAnswer(), correctAnswer);
 }
 
 void DivisionGame()
@@ -119,10 +111,51 @@ Generate a random first number (n1)
 Generate a random multiplier (m)
 Use the product of the first number and the multiplier as the second number (n2 = n1 * m)
 */
+	int intA = rnd.Next(25);
+	int intB = intA * 2;
+	int correctAnswer = intA / intB;
+	Console.WriteLine($"What is {intA} / {intB}?");
+	CheckAnswer(GetAnswer(), correctAnswer);
 }
 
 int GetAnswer()
 {
-	int input = Convert.ToInt32(Console.ReadLine());
-	return input;
+	int number = 0;
+	bool validInput = false;
+	do {
+	bool success = int.TryParse(Console.ReadLine(),	out number);
+	
+	if (success)
+	{
+		validInput = true;
+	}
+	else
+	
+	{
+		Console.WriteLine("You must only input numbers");
+	}
+	
+	}while(validInput == false);
+	
+	return number;
+}
+
+
+bool CheckAnswer(int answer, int correctAnswer)
+{
+	if (answer == correctAnswer)
+	{
+		Console.WriteLine($"{answer} is correct!");
+		points ++;
+		Console.WriteLine($"Points: {points}");
+		return true;
+	}
+	else
+	{
+		Console.WriteLine($"Incorrect the correct answer is {correctAnswer} ");
+		healthPoints --;
+		Console.WriteLine($"You have {healthPoints} health points left");
+		return false;
+	}
+
 }
