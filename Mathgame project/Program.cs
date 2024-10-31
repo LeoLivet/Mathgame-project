@@ -101,19 +101,10 @@ void MultiplicatonGame()
 
 void DivisionGame()
 {
-	/*
-	4
-
-A simple approach would be:
-
-Generate a random first number (n1)
-Generate a random multiplier (m)
-Use the product of the first number and the multiplier as the second number (n2 = n1 * m)
-*/
-	int intA = rnd.Next(25);
-	int intB = intA * 2;
-	int correctAnswer = intA / intB;
-	Console.WriteLine($"What is {intA} / {intB}?");
+	int intA = rnd.Next(1, 10);
+	int intB = intA * rnd.Next(10);
+	int correctAnswer = intB / intA;
+	Console.WriteLine($"What is {intB} / {intA}? (Rounded down)");
 	CheckAnswer(GetAnswer(), correctAnswer);
 }
 
